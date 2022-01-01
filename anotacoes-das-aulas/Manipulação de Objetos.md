@@ -4,7 +4,7 @@
 
 A variável *$objProfile* vai receber o array *$arrProfile* transformando em objeto.
 
-```ph
+```php
 $arrProfile = [
     "name" => "Lucas",
     "company" => "Alpha",
@@ -13,4 +13,15 @@ $arrProfile = [
 
 $objProfile = (object) $arrProfile;
 ```
+
+## Removendo uma chave do objeto em PHP.
+
+A função unset remove a chave desejada.
+
+```php
+unset($objProfile->company);
+var_dump($objProfile);
+```
+
+
 
