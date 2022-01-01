@@ -8,9 +8,9 @@ fullStackPHPClassName("03.03 - Funções para arrays");
 fullStackPHPClassSession("manipulação", __LINE__);
 
 $index = [
-    "AC/DC",
-    "Nirvana",
-    "Alter Bridge",
+  "AC/DC",
+  "Nirvana",
+  "Alter Bridge"
 ];
 
 $assoc = [
@@ -23,8 +23,7 @@ array_unshift($index, "", "Pearl Jam");
 $assoc = ["band_4" => "Pearl Jam", "band_5" => ""] + $assoc;
 
 array_push($index, "");
-$assoc = $assoc + ["band_6" => ""];
-
+$assoc += ["band_6" => ""];
 
 array_shift($index);
 array_shift($assoc);
@@ -42,13 +41,10 @@ var_dump(
     $assoc
 );
 
-
 /*
  * [ ordenação ] reverse | asort | ksort | sort
  */
 fullStackPHPClassSession("ordenação", __LINE__);
-
-
 $index = array_reverse($index);
 $assoc = array_reverse($assoc);
 
@@ -61,7 +57,6 @@ krsort($index);
 sort($index);
 rsort($index);
 
-
 var_dump(
     $index,
     $assoc
@@ -72,19 +67,18 @@ var_dump(
  */
 fullStackPHPClassSession("verificação", __LINE__);
 
-var_dump(
-    [
-        array_keys($assoc),
-        array_values($assoc)
-    ]
-);
+var_dump([
+   array_keys($assoc),
+   array_values($assoc),
+]);
 
-if (in_array("AC/DC", $assoc)) {
-    echo "<p>Cause I`m back!</p>";
+if(in_array("AC/DC", $assoc)) {
+    echo "<p>Cause I`m Back</p>";
 }
 
+
 $arrToString = implode(", ", $assoc);
-echo "<p>Eu curso {$arrToString} e muitas outra!</p>";
+echo "<p>Eu curso {$arrToString} e muitas outras!</p>";
 echo "<p>{$arrToString}</p>";
 
 var_dump(explode(", ", $arrToString));
@@ -95,19 +89,18 @@ var_dump(explode(", ", $arrToString));
  */
 fullStackPHPClassSession("exemplo prático", __LINE__);
 
-
 $profile = [
-    "name" => "Robson",
-    "company" => "UpInside",
-    "mail" => "cursos@upinside.com.br"
+    "name" => "Lucas",
+    "company" => "Alpha",
+    "mail" => "lgomes.lg99@gmail.com"
 ];
 
 $template = <<<TPL
-   <article>
-      <h1>{{name}}</h1>
-      <p>{{company}}<br>
-      <a href="mailto:{{mail}}" title="Enviar e-mail para {{name}}">Enviar E-mail</a></p>
-   </article>
+    <article>
+        <h1>{{name}}</h1>
+        <p>{{company}} </p>
+        <p><a href="mailto:{{email}}" title="Enviar e-mail para {{name}}">Enviar E-mail</a></p>
+    </article>
 TPL;
 
 echo $template;
@@ -119,12 +112,12 @@ echo str_replace(
 $replaces = "{{" . implode("}}&{{", array_keys($profile)) . "}}";
 
 //var_dump(explode("&", $replaces));
+
 echo str_replace(
     explode("&", $replaces),
     array_values($profile),
     $template
 );
-
 
 
 

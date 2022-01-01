@@ -90,13 +90,13 @@ fullStackPHPClassSession("parse string", __LINE__);
 $endPoint = "name=Lucas&email=lgomes.lg99@gmail.com";
 mb_parse_str($endPoint, $parseEndPoint);
 
-echo "<pre>";
+
 var_dump([
     $endPoint,
     $parseEndPoint,
     (object)$parseEndPoint
 ]);
-echo "</pre>";
+
 
 
 
