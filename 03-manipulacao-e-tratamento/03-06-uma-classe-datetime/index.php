@@ -52,12 +52,32 @@ $dateTime->sub($dateInterval);
 var_dump([$dateTime]);
 
 
-$birth = new DateTime(date("Y") . "-01-02");
+$birth1 = new DateTime(date("Y") . "-01-02");
+
+// próximo aniversário
+$birth2 = new DateTime( "2023-01-02");
 $dateNow = new DateTime("now");
 
-$diff = $dateNow->diff($birth);
+$diff = $dateNow->diff($birth1);
+$diff2 = $dateNow->diff($birth2);
 
-var_dump([$birth, $diff]);
+var_dump([$birth1, $diff, $diff2]);
+
+if($diff2->invert){
+    echo "<p>Seu aniversário foi a {$diff2->days} dias</p>";
+} else {
+    echo "<p>Faltam {$diff2->days} dias para seu aniversário!</p>";
+}
+
+$dateResources = new DateTime("now");
+
+var_dump([
+    $dateResources->format(DATE_BR),
+    $dateResources->sub(DateInterval::createFromDateString("15days"))->format(DATE_BR),
+    $dateResources->add(DateInterval::createFromDateString("15days"))->format(DATE_BR)
+]);
+
+
 
 
 /**
@@ -65,3 +85,20 @@ var_dump([$birth, $diff]);
  */
 fullStackPHPClassSession("A classe DatePeriod", __LINE__);
 
+$start = new DateTime("now");
+$interval = new DateInterval("P1M");
+$end = new DateTime("2023-01-20");
+
+$period = new DatePeriod($start, $interval, $end);
+
+var_dump([
+    $start->format(DATE_BR),
+    $interval->format(DATE_BR),
+    $end->format(DATE_BR)
+], $period, get_class_methods($period));
+
+
+echo "<h1>Sua Assinatuara: </h1>";
+foreach ($period as $recurrences) {
+    echo "<p>Proxima vencimento {$recurrences->format(DATE_BR)}</p>";
+}
